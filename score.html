@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>score</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+
+
+        body {
+            font-family: 'Luckiest Guy', cursive;
+        }
+
+        .personsection {
+            display: flex;
+            margin: 0 auto;
+
+        }
+
+        .each {
+            display: flex;
+            width: 800px;
+            height: 500px;
+            position: relative;
+        }
+
+        .picwrap {
+            width: 500px;
+        }
+
+        .picwrap img {
+            width: 100%;
+        }
+
+        .profile {
+            /* height: 450px; */
+            background-color: rgba(245, 224, 131, 0.76);
+            border-radius: 50px/50px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+        }
+
+        .averageenglish {
+            margin: 0 auto;
+        }
+
+        .averageenglish h2 {
+            background: url(./imgs/fwWE4D.jpg);
+            font-weight: bolder;
+            font-size: 200px;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-align: center;
+            /* animation-name: color-change;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            background-position: 0% 0%;
+            transition: 2s; */
+        }
+
+
+
+        .averagemath h2 {
+            background: url(./imgs/_Wallpapers\ \ Pinterest\ \ Wallpaper\ Mac\ wallpaper\ and\ Wallpaper.jpg);
+            font-weight: bolder;
+            font-size: 200px;
+            color: transparent;
+            background-clip: text;
+            -webkit-background-clip: text;
+            text-align: center;
+            /* animation-name: color-change-math;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            /* 無限輪迴 */
+            /* animation-direction: alternate;
+            /* 雙向 */
+            /* background-position: 0% 0%;
+            transition: .2s; */
+
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="personsection">
+        <div class="each alex">
+            <div class="picwrap">
+                <img src="./imgs/—Pngtree—charismatic guy cute boy q_3785084.png" alt="">
+            </div>
+            <div class="profile">
+                <h3 class="name"></h3>
+                <h3 class="age"></h3>
+                <h3 class="eng"></h3>
+                <h3 class="math"></h3>
+            </div>
+        </div>
+        <div class="each bill">
+            <div class="picwrap">
+                <img src="./imgs/—Pngtree—football play football boy play_3779279.png" alt="">
+            </div>
+            <div class="profile">
+                <h3 class="name"></h3>
+                <h3 class="age"></h3>
+                <h3 class="eng"></h3>
+                <h3 class="math"></h3>
+            </div>
+        </div>
+        <div class="each cook">
+            <div class="picwrap">
+                <img src="./imgs/—Pngtree—sports boy cute boys q_3785083.png" alt="">
+            </div>
+            <div class="profile">
+                <h3 class="name"></h3>
+                <h3 class="age"></h3>
+                <h3 class="eng"></h3>
+                <h3 class="math"></h3>
+            </div>
+        </div>
+    </div>
+    <div class="averageenglish">
+        <h2>English avg <span>XX</span></h2>
+
+    </div>
+    <div class="averagemath">
+        <h2>Math avg <span>XX</span></h2>
+    </div>
+
+
+    <script>
+        let data = [
+            { name: "Alex2", age: 18, eng_score: 87, math_score: 90 },
+            { name: "Bill2", age: 19, eng_score: 95, math_score: 98 },
+            { name: "Cook2", age: 17, eng_score: 100, math_score: 73 }
+        ];
+        let eachDiv = document.querySelectorAll('.each');
+        console.log('eachDiv', eachDiv[0].children[1].children[0].innerHTML = 'ABC')
+        let totalEngScore = 0;
+        let totalMathScore = 0;
+        for (let i = 0; i < data.length; i++) {
+            console.log('hi', data[i])
+
+            totalEngScore += data[i].eng_score;
+            totalMathScore += data[i].math_score;
+
+            // name 
+            eachDiv[i].children[1].children[0].innerHTML = data[i].name;
+            // age
+            eachDiv[i].children[1].children[1].innerHTML = data[i].age + 'YS';
+
+            // eng score
+            eachDiv[i].children[1].children[2].innerHTML = 'eng:' + data[i].eng_score;
+
+            // math score
+            eachDiv[i].children[1].children[3].innerHTML = 'math:' + data[i].math_score;
+        }
+
+        let engScoreSpan = document.querySelector('.averageenglish span');
+        engScoreSpan.innerHTML = totalEngScore / data.length;
+
+        let mathScoreSpan = document.querySelector('.averagemath span');
+        mathScoreSpan.innerHTML = totalMathScore / data.length;
+
+
+        let engH2 = document.querySelector('.averageenglish h2');
+        let transitionTime = Math.floor(Math.random() * 2) + 1;
+        // engH2.style.transition = `${transitionTime}s`;
+
+        function engMove() {
+            let randomPercentage = Math.round(Math.random() * 100);
+            let randomPercentage2 = Math.round(Math.random() * 100);
+            // 四捨五入
+            transitionTime = Math.round(Math.random() * 2) + 1;
+
+
+            engH2.style.backgroundPosition = `${randomPercentage}% ${randomPercentage2}%`;
+
+            engH2.style.transition = `${transitionTime}s`;
+        }
+
+        engMove();
+
+        setInterval(() => {
+            engMove();
+        }, transitionTime * 1000);
+
+
+        let mathH2 = document.querySelector('.averagemath h2');
+        let transitionTimeMath = Math.floor(Math.random() * 2) + 1;
+
+        // mathH2.style.transition = `${transitionTimeMath}`;
+
+        function mathMove() {
+            let randomPercentageMath = Math.floor(Math.random() * 100);
+            let randomPercentageMath2 = Math.floor(Math.random() * 100);
+            transitionTimeMath = Math.floor(Math.random() * 2) + 1;
+
+            mathH2.style.backgroundPosition = `${randomPercentageMath}% ${randomPercentageMath2}%`;
+
+            mathH2.style.transition = `${transitionTimeMath}s`
+        }
+
+        mathMove();
+        setInterval(() => {
+            mathMove();
+        }, transitionTimeMath * 1000);
+
+
+    </script>
+</body>
+
+</html>
